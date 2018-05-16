@@ -1,0 +1,48 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Scriban Online Demo";
+}
+<nav class="navbar navbar-light bg-light">
+    <span class="navbar-brand mb-0 h1">@ViewData["Title"]</span>
+</nav>
+
+<div class="container" id="root">
+
+    <form>
+        <div class="form-row">
+            
+            <div class="col">
+                <div class="form-group">
+                    <label for="model">The Model (valid json)</label>
+                    <textarea class="form-control" id="model" rows="6" v-model="model" :disabled="loading == true"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            
+            <div class="col">
+                <div class="form-group">
+                    <label for="template">Scriban Template</label>
+                    <textarea class="form-control" id="template" rows="6" v-model="template" :disabled="loading == true"></textarea>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="form-group">
+                    <label for="output">Output</label>
+                    <textarea class="form-control" id="output" rows="6" v-model="output" :disabled="loading == true"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="col">
+                <button class="btn btn-primary" @@click.prevent="generate" :disabled="loading">Generate</button> <i v-if="loading" class="fas fa-cog fa-spin"></i>
+            </div>
+        </div>
+
+    </form>
+
+</div>

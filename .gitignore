@@ -1,0 +1,11 @@
+.nuget/
+.build/
+.vs/
+.vscode/
+.idea/
+bin/
+obj/
+packages/
+*DS_Store
+*.user
+*.suo
