@@ -1,9 +1,25 @@
 ﻿new Vue({
     el: "#root",
-
+    
     data: {
-        model: "{\n    \"value\" : \"text value\"\n}",
-        template: "This is the {{ model.value }}.",
+        model: '{ "name" : "Bob Smith", "address" : "1 Smith St, Smithville", "orderId" : "123455", "total" : 23435.34, "items" : [ { "name" : "1kg carrots", "quantity" : 1, "total" : 4.99 } ] }',
+        template: "Dear {{ model.name }},\n" +
+            "\n" +
+            "Your order, {{ model.orderId}}, is now ready to be collected.\n" +
+            "\n" +
+            "Your order shall be delivered to {{ model.address }}.  If you need it delivered to another location, please contact as ASAP.\n" +
+            "\n" +
+            "\n" +
+            "Order: {{ model.orderId}}\n" +
+            "Total: ${{ model.total }}" +
+            "\n" +
+            "Items:\n" +
+            "{{ for item in model.items -}}\n" +
+            " * {{ item.quantity }} x {{ item.name }} - $ {{ item.total }}\n" +
+            "{{- end }}\n" +
+            "\n" +
+            "Thanks,\n" +
+            "BuyFromUs",
         output: "This is the text value.",
         loading: false
     },
@@ -17,13 +33,15 @@
                 output: this.output
             }).then(response => {
                 this.output = response.data.output;
-            })
-            .catch(response => {
+            }).catch(response => {
                 alert(response);
-            })
-            .finally(x => {
+            }).finally(x => {
                 this.loading = false;
-            });    
+            });
         }
+    },
+    
+    beforeMount() {
+        this.generate();
     }
 });

@@ -20,7 +20,7 @@ namespace scribanonline.Controllers
         [HttpPost]
         public ActionResult<GenerateOutput> Post(GenerateInput model)
         {
-            return new GenerateOutput()
+            return new GenerateOutput
             {
                 Output = Generate(model.Model, model.Template)
             };
