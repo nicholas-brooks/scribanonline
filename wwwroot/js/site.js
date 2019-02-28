@@ -11,11 +11,11 @@
             "\n" +
             "\n" +
             "Order: {{ model.orderId}}\n" +
-            "Total: ${{ model.total }}" +
+            "Total: {{ model.total | math.format \"c\" \"en-US\" }}" +
             "\n" +
             "Items:\n" +
             "{{ for item in model.items -}}\n" +
-            " * {{ item.quantity }} x {{ item.name }} - $ {{ item.total }}\n" +
+            " * {{ item.quantity }} x {{ item.name }} - {{ item.total | math.format \"c\" \"en-US\" }}\n" +
             "{{- end }}\n" +
             "\n" +
             "Thanks,\n" +
