@@ -2,7 +2,7 @@
     el: "#root",
     
     data: {
-        model: '{ "name" : "Bob Smith", "address" : "1 Smith St, Smithville", "orderId" : "123455", "total" : 23435.34, "items" : [ { "name" : "1kg carrots", "quantity" : 1, "total" : 4.99 } ] }',
+        model: '{ "name" : "Bob Smith", "address" : "1 Smith St, Smithville", "orderId" : "123455", "total" : 23435.34, "items" : [ { "name" : "1kg carrots", "quantity" : 1, "total" : 4.99 }, { "name" : "2L Milk", "quantity" : 1, "total" : 3.5 } ] }',
         template: "Dear {{ model.name }},\n" +
             "\n" +
             "Your order, {{ model.orderId}}, is now ready to be collected.\n" +
@@ -14,7 +14,7 @@
             "Total: {{ model.total | math.format \"c\" \"en-US\" }}" +
             "\n" +
             "Items:\n" +
-            "{{ for item in model.items -}}\n" +
+            "{{- for item in model.items }}\n" +
             " * {{ item.quantity }} x {{ item.name }} - {{ item.total | math.format \"c\" \"en-US\" }}\n" +
             "{{- end }}\n" +
             "\n" +
