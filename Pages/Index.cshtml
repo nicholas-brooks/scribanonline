@@ -25,9 +25,8 @@
             
             <div class="col">
                 <div class="form-group">
-                    <label for="template">Scriban Template</label>
+                    <label for="template">Scriban Template (<a href="https://github.com/lunet-io/scriban/tree/master/doc">Template docs</a>)</label>
                     <textarea class="form-control" id="template" rows="10" v-model="template" :disabled="loading == true"></textarea>
-                    <div class="form-text"><a href="https://github.com/lunet-io/scriban/tree/master/doc">Template docs</a></div>
                 </div>
             </div>
 
@@ -38,13 +37,18 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="form-row">
             <div class="col">
                 <button class="btn btn-primary" @@click.prevent="generate" :disabled="loading">Generate</button> <i v-if="loading" class="fas fa-cog fa-spin"></i>
             </div>
         </div>
-
+        
+        <div class="form-row">
+            <div class="col">
+                    <div class="form-text">Built with Scriban version @Model.Version</div>
+            </div>
+        </div>
     </form>
 
 </div>

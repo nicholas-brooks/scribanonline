@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Scriban;
+using System.Reflection;
 
 namespace scribanonline
 {
@@ -20,5 +21,7 @@ namespace scribanonline
                 return char.ToLower(value[0]) + value.Substring(1);
             return value;
         }
+
+        public static string Version => typeof(Scriban.Template).Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
     }
 }
