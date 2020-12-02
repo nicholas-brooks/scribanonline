@@ -9,11 +9,11 @@
             "\n" +
             "Your order shall be delivered to {{ model.address }}.  If you need it delivered to another location, please contact as ASAP.\n" +
             "\n" +
-            "\n" +
             "Order: {{ model.orderId}}\n" +
-            "Total: {{ model.total | math.format \"c\" \"en-US\" }}" +
+            "Total: {{ model.total | math.format \"c\" \"en-US\" }}\n" +
             "\n" +
             "Items:\n" +
+            "------\n" +
             "{{- for item in model.items }}\n" +
             " * {{ item.quantity }} x {{ item.name }} - {{ item.total | math.format \"c\" \"en-US\" }}\n" +
             "{{- end }}\n" +
