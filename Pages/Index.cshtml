@@ -11,42 +11,29 @@
 
 <p>This is a simple online demonstration of <a href="https://github.com/lunet-io/scriban">Scriban</a>, a fast, powerful, safe and lightweight text templating language and engine for .NET.</p>
     <form>
-        <div class="form-row">
+        <div class="row g-3">
             
-            <div class="col">
-                <div class="form-group">
-                    <label for="model">The Model (valid json)</label>
-                    <textarea class="form-control" id="model" rows="6" v-model="model" :disabled="loading == true"></textarea>
-                </div>
+            <div class="col-12">
+                <label for="model">The Model (valid json)</label>
+                <textarea class="form-control" id="model" rows="6" v-model="model" :disabled="loading == true"></textarea>
             </div>
-        </div>
-        
-        <div class="form-row">
             
-            <div class="col">
-                <div class="form-group">
-                    <label for="template">Scriban Template (<a href="https://github.com/lunet-io/scriban/tree/master/doc">Template docs</a>)</label>
-                    <textarea class="form-control" id="template" rows="10" v-model="template" :disabled="loading == true"></textarea>
-                </div>
+            <div class="col-6">
+                <label for="template">Scriban Template (<a href="https://github.com/lunet-io/scriban/tree/master/doc">Template docs</a>)</label>
+                <textarea class="form-control" id="template" rows="10" v-model="template" :disabled="loading == true"></textarea>
             </div>
 
-            <div class="col">
-                <div class="form-group">
-                    <label for="output">Output</label>
-                    <textarea class="form-control" id="output" rows="10" v-model="output" :disabled="loading == true"></textarea>
-                </div>
+            <div class="col-6">
+                <label for="output">Output</label>
+                <textarea class="form-control" id="output" rows="10" v-model="output" :disabled="loading == true"></textarea>
             </div>
-        </div>
 
-        <div class="form-row">
-            <div class="col">
+            <div class="col-12">
                 <button class="btn btn-primary" @@click.prevent="generate" :disabled="loading">Generate</button> <i v-if="loading" class="fas fa-cog fa-spin"></i>
             </div>
-        </div>
-        
-        <div class="form-row">
+
             <div class="col">
-                    <div class="form-text">Built with Scriban version @Model.Version</div>
+                <div class="form-text">Built with Scriban version @Model.Version</div>
             </div>
         </div>
     </form>
