@@ -1,6 +1,5 @@
 using System.Dynamic;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using scribanonline.Models;
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using Scriban;
+﻿using Scriban;
 using System.Reflection;
 
 namespace scribanonline
