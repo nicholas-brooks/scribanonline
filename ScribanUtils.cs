@@ -5,7 +5,7 @@ namespace scribanonline
 {
     public static class ScribanUtils
     {
-        public static string Render(string templateStr, object obj = null)
+        public static string Render(string templateStr, object? obj = null)
         {
             var template = Template.Parse(templateStr);
             if (template.HasErrors)
@@ -20,6 +20,6 @@ namespace scribanonline
             return value;
         }
 
-        public static string Version => typeof(Scriban.Template).Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>().Version;
+        public static string Version => typeof(Scriban.Template).Assembly.GetCustomAttribute<AssemblyFileVersionAttribute>()?.Version ?? "?";
     }
 }

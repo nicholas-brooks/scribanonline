@@ -27,7 +27,7 @@ namespace scribanonline.Controllers
 
         private string Generate(string model, string template)
         {
-            return Generate(JsonConvert.DeserializeObject<ExpandoObject>(model), template);
+            return Generate((object?) JsonConvert.DeserializeObject<ExpandoObject>(model) ?? new {}, template);
         }
 
         private string Generate(object model, string template)
