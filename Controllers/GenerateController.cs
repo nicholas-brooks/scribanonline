@@ -32,8 +32,16 @@ namespace scribanonline.Controllers
 
         private string Generate(object model, string template)
         {
-            logger.LogInformation("Generating for {template} using {model}", template, model);
-            return ScribanUtils.Render(template, new { model });
+            logger.LogDebug("Generating for {template} using {@model}", template, model);
+            try
+            {
+                return ScribanUtils.Render(template, new {model});
+            }
+            catch (Exception e)
+            {
+                logger.LogError(e, "Error generating {template} using {@model}", template, model);
+                throw;
+            }
         }
     }
 }
