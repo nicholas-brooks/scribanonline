@@ -31,7 +31,6 @@ namespace scribanonline.Controllers
 
         private string Generate(object model, string template)
         {
-            logger.LogDebug("Generating for {template} using {@model}", template, model);
             try
             {
                 return ScribanUtils.Render(template, new {model});
