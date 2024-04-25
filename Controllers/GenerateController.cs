@@ -5,15 +5,8 @@ using scribanonline.Models;
 namespace scribanonline.Controllers
 {
     [ApiController]
-    public class GenerateController : ControllerBase
+    public class GenerateController(ILogger<GenerateController> logger) : ControllerBase
     {
-        private readonly ILogger<GenerateController> logger;
-
-        public GenerateController(ILogger<GenerateController> logger)
-        {
-            this.logger = logger;
-        }
-
         [Route("/generate")]
         [HttpPost]
         public ActionResult<GenerateOutput> Post(GenerateInput model)
@@ -37,7 +30,7 @@ namespace scribanonline.Controllers
             }
             catch (Exception e)
             {
-                logger.LogError(e, "Error generating {template} using {@model}", template, model);
+                logger.LogError(e, "Error generating {Template} using {@Model}", template, model);
                 throw;
             }
         }
