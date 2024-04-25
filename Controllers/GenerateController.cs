@@ -1,6 +1,5 @@
-using System.Dynamic;
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using scribanonline.Models;
 
 namespace scribanonline.Controllers
@@ -27,7 +26,7 @@ namespace scribanonline.Controllers
 
         private string Generate(string model, string template)
         {
-            return Generate((object?) JsonConvert.DeserializeObject<ExpandoObject>(model) ?? new {}, template);
+            return Generate((object?)JsonSerializer.Deserialize<JsonElement>(model) ?? new {}, template);
         }
 
         private string Generate(object model, string template)
