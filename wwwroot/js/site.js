@@ -42,6 +42,15 @@
     },
     
     beforeMount() {
+
+        let urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('template')) {
+            this.template = urlParams.get('template');
+        }
+        if (urlParams.has('model')) {
+            this.model = urlParams.get('model');
+        }
+        
         this.generate();
     }
 });
