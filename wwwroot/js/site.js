@@ -25,19 +25,31 @@
     },
 
     methods: {
-        generate() {
+        async generate() {
             this.loading = true;
-            axios.post('/generate', {
-                model: this.model,
-                template: this.template,
-                output: this.output
-            }).then(response => {
-                this.output = response.data.output;
-            }).catch(response => {
-                alert(response);
-            }).finally(x => {
+
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        model: this.model,
+                        template: this.template,
+                        output: this.output
+                    })
+                });
+
+                if (!response.ok) throw new Error(`Request failed with status code ${response.status}`);
+
+                const data = await response.json();
+                this.output = data.output;
+            } catch (e) {
+                alert(e)
+            } finally {
                 this.loading = false;
-            });
+            }
         }
     },
     
